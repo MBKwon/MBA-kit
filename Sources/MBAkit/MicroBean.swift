@@ -23,13 +23,18 @@ public class MicroBean<VC, VM, VI> where VC: ViewControllerConfigurable & ViewCo
     private let viewModel: VM
     private let viewInteractor: VI
 
-    private let messageObserver: (Result<VC.O, Error>) -> Void
+    private let messageObserver: ((MessageObservation) -> Void)?
     private var cancellables = Set<AnyCancellable>()
+
+    public enum MessageObservation {
+        case handleResult(result: Result<VC.O, Error>)
+        case executeInteraction(interaction: VC.IM)
+    }
 
     public init(withVC viewController: VC,
                 viewModel: VM,
                 viewInteractor: VI,
-                observeMessage: @escaping (Result<VC.O, Error>) -> Void) {
+                observeMessage: ((MessageObservation) -> Void)? = nil) {
 
         self.viewController = viewController
         self.viewModel = viewModel
@@ -56,12 +61,15 @@ private extension MicroBean {
 
     func handleResult(_ result: Result<VC.O, Error>) {
         let handleOutputMessage: (VC.O) -> Void = {
-            self.messageObserver(.success($0))
-            self.viewInteractor.handleMessage(self.viewController.convertToInteraction(from: $0))
+            self.messageObserver?(.handleResult(result: .success($0)))
+
+            let im = self.viewController.convertToInteraction(from: $0)
+            self.messageObserver?(.executeInteraction(interaction: im))
+            self.viewInteractor.handleMessage(im)
         }
 
         let handleError: (Error) -> Void = {
-            self.messageObserver(.failure($0))
+            self.messageObserver?(.handleResult(result: .failure($0)))
         }
 
         result.fold(success: handleOutputMessage,

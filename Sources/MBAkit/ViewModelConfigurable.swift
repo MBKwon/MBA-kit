@@ -30,8 +30,6 @@ public protocol ViewControllerConfigurable where Self: UIViewController,
     associatedtype VM
     associatedtype I
     associatedtype O
-    
-    var viewModel: VM { get }
 }
 
 // MARK: - View Interactor
@@ -51,8 +49,6 @@ public protocol ViewContollerInteractable where Self: UIViewController,
     associatedtype VI
     associatedtype IM
     associatedtype O
-    
-    var viewInteractor: VI { get }
     
     func convertToInteraction(from outputMessage: O) -> IM
 }
