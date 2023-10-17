@@ -30,12 +30,6 @@ public protocol ViewControllerConfigurable where Self: UIViewController,
     associatedtype VM
     associatedtype I
     associatedtype O
-    
-    var viewModel: VM { get }
-    var cancellables: Set<AnyCancellable> { get }
-    
-    func bindViewModel(_ viewModel: VM)
-    func handleResult(_ result: Result<O, Error>)
 }
 
 // MARK: - View Interactor
@@ -55,8 +49,6 @@ public protocol ViewContollerInteractable where Self: UIViewController,
     associatedtype VI
     associatedtype IM
     associatedtype O
-    
-    var viewInteractor: VI { get }
     
     func convertToInteraction(from outputMessage: O) -> IM
 }
