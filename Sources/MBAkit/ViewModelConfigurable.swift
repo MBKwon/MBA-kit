@@ -32,10 +32,6 @@ public protocol ViewControllerConfigurable where Self: UIViewController,
     associatedtype O
     
     var viewModel: VM { get }
-    var cancellables: Set<AnyCancellable> { get }
-    
-    func bindViewModel(_ viewModel: VM)
-    func handleResult(_ result: Result<O, Error>)
 }
 
 // MARK: - View Interactor
