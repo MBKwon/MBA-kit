@@ -46,11 +46,11 @@ public class MicroBean<VC, VM, VI> where VC: ViewControllerConfigurable & ViewCo
 }
 
 extension MicroBean {
-    public func handleInputMessage(inputMessage: VC.I) {
+    public func handle(inputMessage: VC.I) {
         self.viewModel.handleMessage(inputMessage)
     }
 
-    public func handleInteractionMessage(interactionMessage: VC.IM) {
+    public func handle(interactionMessage: VC.IM) {
         self.viewInteractor.handleMessage(interactionMessage)
     }
 }
