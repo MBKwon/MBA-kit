@@ -49,6 +49,10 @@ extension MicroBean {
     public func handleInputMessage(inputMessage: VC.I) {
         self.viewModel.handleMessage(inputMessage)
     }
+
+    public func handleInteractionMessage(interactionMessage: VC.IM) {
+        self.viewInteractor.handleMessage(interactionMessage)
+    }
 }
 
 private extension MicroBean {
