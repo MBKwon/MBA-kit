@@ -8,11 +8,12 @@
 import Combine
 import Foundation
 
+public typealias MBAConfigurable = ViewControllerConfigurable & ViewContollerInteractable
 
 #if canImport(UIKit)
 import UIKit
 
-public class MicroBean<VC, VM, VI> where VC: ViewControllerConfigurable & ViewContollerInteractable,
+public final class MicroBean<VC, VM, VI> where VC: MBAConfigurable,
                                          VM: ViewModelConfigurable,
                                          VI: ViewInteractorConfigurable,
                                          VC.I == VM.VC.I,
@@ -80,6 +81,5 @@ private extension MicroBean {
                     failure: handleError)
     }
 }
-
 #endif
 
