@@ -5,27 +5,7 @@
 //  Created by Moonbeom KWON on 2023/08/25.
 //
 
-import Combine
 import Foundation
-
-extension Result {
-    public func fold(success successHandler: (Success) -> Void,
-                     failure failureHandler: (Error) -> Void) {
-        
-        switch self {
-        case .success(let successValue):
-            successHandler(successValue)
-        case .failure(let error):
-            failureHandler(error)
-        }
-    }
-}
-
-extension Result {
-    public func send(through subject: PassthroughSubject<Self, Never>) {
-        subject.send(self)
-    }
-}
 
 extension Result where Success == ResponseType, Failure == Error {
     
