@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/MBKwon/ResultExtensions",
       "state" : {
-        "branch" : "main",
-        "revision" : "60c252f7a57c8b64f51bb566722e5654756901db"
+        "revision" : "60c252f7a57c8b64f51bb566722e5654756901db",
+        "version" : "0.9.5"
       }
     }
   ],
