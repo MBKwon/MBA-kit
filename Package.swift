@@ -13,10 +13,16 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "MBAkit",
-            targets: ["MBAkit-core", "MBAkit-url-session"]),
+            targets: ["MBAkit-core", "MBAkit-data-manager", "MBAkit-image-loader", "MBAkit-url-session"]),
         .library(
             name: "MBAkit-core",
             targets: ["MBAkit-core"]),
+        .library(
+            name: "MBAkit-data-manager",
+            targets: ["MBAkit-data-manager"]),
+        .library(
+            name: "MBAkit-image-loader",
+            targets: ["MBAkit-image-loader"]),
         .library(
             name: "MBAkit-url-session",
             targets: ["MBAkit-url-session"]),
@@ -31,6 +37,11 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "MBAkit-core",
+            dependencies: ["ResultExtensions"]),
+        .target(
+            name: "MBAkit-data-manager"),
+        .target(
+            name: "MBAkit-image-loader",
             dependencies: ["ResultExtensions"]),
         .target(
             name: "MBAkit-url-session",
