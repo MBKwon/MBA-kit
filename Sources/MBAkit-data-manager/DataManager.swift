@@ -8,7 +8,7 @@
 import Foundation
 
 public actor DataManager {
-    static let `default` = DataManager()
+    public static let `default` = DataManager()
     private init() { }
     
     private lazy var memCache: NSCache<AnyObject, AnyObject> = {

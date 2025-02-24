@@ -42,7 +42,7 @@ let package = Package(
             name: "MBAkit-data-manager"),
         .target(
             name: "MBAkit-image-loader",
-            dependencies: ["ResultExtensions"]),
+            dependencies: ["ResultExtensions", "MBAkit-data-manager"]),
         .target(
             name: "MBAkit-url-session",
             dependencies: ["ResultExtensions"]),

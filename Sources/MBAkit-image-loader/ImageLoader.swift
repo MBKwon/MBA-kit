@@ -6,15 +6,16 @@
 //
 
 import Foundation
+import MBAkit_data_manager
 import ResultExtensions
 
 public class ImageLoader {
-    struct ImageData: Codable {
+    public struct ImageData: Codable {
         let data: Data
         let url: String
     }
     
-    static func loadImage(with imageURL: URL) async -> Result<ImageData, Error> {
+    public static func loadImage(with imageURL: URL) async -> Result<ImageData, Error> {
         return await DataManager.default.loadObject(object: .cache, forKey: imageURL.absoluteString)
             .decode(decoder: ImageData.self)
             .asyncFlatMapError({ _ in await ImageLoader.loadImageData(from: imageURL) })
