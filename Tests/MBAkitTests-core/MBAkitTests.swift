@@ -1,7 +1,7 @@
 import XCTest
-@testable import MBAkit
+@testable import MBAkit_core
 
-final class MBAkitTests: XCTestCase {
+final class MBAkitCoreTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
