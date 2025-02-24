@@ -11,8 +11,8 @@ import ResultExtensions
 
 public class ImageLoader {
     public struct ImageData: Codable {
-        let data: Data
-        let url: String
+        public let data: Data
+        public let url: String
     }
     
     public static func loadImage(with imageURL: URL) async -> Result<ImageData, Error> {

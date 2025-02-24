@@ -34,7 +34,7 @@ public extension DataManager {
         case cache
         case document
         
-        var directoryPath: String? {
+        public var directoryPath: String? {
             switch self {
             case .cache:
                 return NSSearchPathForDirectoriesInDomains(.cachesDirectory,
@@ -50,11 +50,11 @@ public extension DataManager {
         case cache(data: Data)
         case document(data: Data)
         
-        var directoryPath: String? {
+        public var directoryPath: String? {
             self.locationType.directoryPath
         }
         
-        var data: Data {
+        public var data: Data {
             switch self {
             case .cache(let data), .document(let data):
                 return data
